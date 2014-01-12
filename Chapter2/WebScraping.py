@@ -1,11 +1,11 @@
 from bs4 import BeautifulSoup
-import urllib.request
+from urllib import urlopen
 from time import sleep
 from datetime import datetime
 
 def getGoldPrice():
     url = "http://gold.org"
-    req = urllib.request.urlopen(url)
+    req = urlopen(url)
     page = req.read()
     scraping = BeautifulSoup(page)
     price = scraping.findAll("td",attrs={"id":"spotpriceCellAsk"})[0].text

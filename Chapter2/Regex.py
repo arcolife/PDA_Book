@@ -16,8 +16,15 @@ print(result)
     
 
 #Date Format
-myString = "01/04/2001"
-isDate = re.match('[0-1][0-9]\/[0-3][0-9]\/[1-2][0-9]{3}', myString)
+myString = raw_input('Enter a valid Date (mm/dd/yy): ')
+
+isDate = re.match('1[0-2]\/3[0-1]\/[1-2][0-9]{3}', myString)
+if not isDate:
+    isDate = re.match('[0-9]\/[0-2][0-9]\/[1-2][0-9]{3}', myString)
+    if not isDate:
+        isDate = re.match('1[0-2]\/[0-2][0-9]\/[1-2][0-9]{3}', myString)
+        if not isDate:
+            isDate = re.match('[0-9]\/3[0-1]\/[1-2][0-9]{3}', myString)
 
 if isDate:
     print("valid")
